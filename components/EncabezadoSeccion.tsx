@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View } from 'react-native';
 import BotonAccion from './BotonAccion';
 
-type Props = {
+type EncabezadoSeccionProps = {
   titulo: string;
   cantidad?: number;
   onVerTodo?: () => void;
@@ -11,7 +11,7 @@ export default function EncabezadoSeccion({
   titulo,
   cantidad,
   onVerTodo,
-}: Props) {
+}: EncabezadoSeccionProps) {
   return (
     <View style={styles.contenedor}>
       <Text style={styles.titulo}>

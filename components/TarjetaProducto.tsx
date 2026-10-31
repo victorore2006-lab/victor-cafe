@@ -2,7 +2,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import BotonAccion from './BotonAccion';
 import { Producto } from '../types/Producto';
 
-type Props = {
+type TarjetaProductoProps = {
   producto: Producto;
   onPress: () => void;
   formatearPrecio: (precio: number) => string;
@@ -14,7 +14,7 @@ export default function TarjetaProducto({
   onPress,
   formatearPrecio,
   textoBoton = 'Agregar',
-}: Props) {
+}: TarjetaProductoProps) {
   const agotado = producto.disponibilidad === 'agotado';
 
   const precioFinal = producto.descuento
@@ -50,7 +50,9 @@ export default function TarjetaProducto({
         </Text>
       )}
 
-      {producto.nuevo && <Text style={styles.texto}>Nuevo</Text>}
+      {producto.nuevo && (
+        <Text style={styles.texto}>Nuevo</Text>
+      )}
 
       {producto.disponibilidad === 'pocasUnidades' && (
         <Text style={styles.texto}>Últimas unidades</Text>

@@ -1,10 +1,16 @@
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity } from 'react-native';
 
-type Props = {
+export type AparienciaBoton =
+  'principal' | 'alternativa' | 'destructiva' | 'enlace';
+
+export type TamanoBoton =
+  'pequeno' | 'mediano' | 'grande';
+
+type BotonAccionProps = {
   texto: string;
   onPress: () => void;
-  apariencia?: 'principal' | 'alternativa' | 'destructiva' | 'enlace';
-  tamano?: 'pequeno' | 'mediano' | 'grande';
+  apariencia?: AparienciaBoton;
+  tamano?: TamanoBoton;
   anchoCompleto?: boolean;
   inhabilitado?: boolean;
   enProceso?: boolean;
@@ -18,7 +24,7 @@ export default function BotonAccion({
   anchoCompleto = false,
   inhabilitado = false,
   enProceso = false,
-}: Props) {
+}: BotonAccionProps) {
   const estilos = {
     principal: styles.principal,
     alternativa: styles.alternativa,
