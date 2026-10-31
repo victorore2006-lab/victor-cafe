@@ -40,5 +40,6 @@ const styles = StyleSheet.create({
   titulo: {
     fontSize: 20,
     fontWeight: 'bold',
+    color: 'black',
   },
 });

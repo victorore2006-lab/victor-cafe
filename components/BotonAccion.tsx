@@ -26,6 +26,13 @@ export default function BotonAccion({
     enlace: styles.enlace,
   };
 
+  const textos = {
+    principal: styles.textoBlanco,
+    alternativa: styles.textoCafe,
+    destructiva: styles.textoBlanco,
+    enlace: styles.textoEnlace,
+  };
+
   const tamanos = {
     pequeno: styles.pequeno,
     mediano: styles.mediano,
@@ -47,7 +54,7 @@ export default function BotonAccion({
       {enProceso ? (
         <ActivityIndicator color="white" />
       ) : (
-        <Text style={styles.texto}>{texto}</Text>
+        <Text style={textos[apariencia]}>{texto}</Text>
       )}
     </TouchableOpacity>
   );
@@ -60,11 +67,11 @@ const styles = StyleSheet.create({
     borderRadius: 6,
   },
   principal: {
-    backgroundColor: '#6f4e37',
+    backgroundColor: '#79553d',
   },
   alternativa: {
     borderWidth: 1,
-    borderColor: '#6f4e37',
+    borderColor: '#79553d',
   },
   destructiva: {
     backgroundColor: '#b00020',
@@ -87,7 +94,14 @@ const styles = StyleSheet.create({
   inhabilitado: {
     opacity: 0.5,
   },
-  texto: {
+  textoBlanco: {
     color: 'white',
+  },
+  textoCafe: {
+    color: '#79553d',
+  },
+  textoEnlace: {
+    color: '#79553d',
+    textDecorationLine: 'underline',
   },
 });

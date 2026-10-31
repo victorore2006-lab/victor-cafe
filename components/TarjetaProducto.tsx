@@ -21,23 +21,39 @@ export default function TarjetaProducto({
     ? producto.precio - producto.precio * producto.descuento / 100
     : producto.precio;
 
+  const colores = {
+    bebida: 'blue',
+    comida: 'orange',
+    postre: 'purple',
+  };
+
   return (
     <View style={[styles.tarjeta, agotado && styles.agotado]}>
       <Text style={styles.nombre}>{producto.nombre}</Text>
-      <Text>{producto.categoria}</Text>
+
+      <Text style={{ color: colores[producto.categoria] }}>
+        {producto.categoria}
+      </Text>
 
       {producto.descuento ? (
-        <Text>
-          {formatearPrecio(producto.precio)} → {formatearPrecio(precioFinal)}
-        </Text>
+        <View style={styles.precios}>
+          <Text style={styles.tachado}>
+            {formatearPrecio(producto.precio)}
+          </Text>
+          <Text style={styles.texto}>
+            {formatearPrecio(precioFinal)}
+          </Text>
+        </View>
       ) : (
-        <Text>{formatearPrecio(producto.precio)}</Text>
+        <Text style={styles.texto}>
+          {formatearPrecio(producto.precio)}
+        </Text>
       )}
 
-      {producto.nuevo && <Text>Nuevo</Text>}
+      {producto.nuevo && <Text style={styles.texto}>Nuevo</Text>}
 
       {producto.disponibilidad === 'pocasUnidades' && (
-        <Text>Últimas unidades</Text>
+        <Text style={styles.texto}>Últimas unidades</Text>
       )}
 
       <BotonAccion
@@ -55,12 +71,25 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     borderWidth: 1,
     borderColor: '#ccc',
+    backgroundColor: 'white',
   },
   nombre: {
     fontSize: 18,
     fontWeight: 'bold',
+    color: 'black',
+  },
+  texto: {
+    color: 'black',
   },
   agotado: {
     opacity: 0.5,
+  },
+  precios: {
+    flexDirection: 'row',
+    gap: 10,
+  },
+  tachado: {
+    textDecorationLine: 'line-through',
+    color: 'gray',
   },
 });
